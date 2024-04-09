@@ -1,0 +1,75 @@
+import java.util.Scanner;
+
+public class GPACalculator {
+	public static void main(String[] args) {
+		Scanner input = new Scanner (System.in);
+		System.out.println("- - - - - - - - - - GPA CALCULATOR - - - - - - - - - -\n");
+		System.out.println("Enter your Grade and Level in each Subject: \n\n - (R for Regular) \n - (A for Accelerated) \n - (H for Honors)\n\nIF YOU HAVE NOT TAKEN HEALTH OR GYM YET JUST TYPE 100\n\n- - - - - - - - - - - - - - - - - - - - - - - - - - - -\n");
+		System.out.println("\nEnter English Average Grade and Level: ");
+		double ela = input.nextDouble();
+		char elaL = input.next().charAt(0);
+		System.out.println("\nEnter Math Average Grade and Level: ");
+		double math = input.nextDouble();
+		char mathL = input.next().charAt(0);
+		System.out.println("\nEnter Science Average Grade and Level: ");
+		double science = input.nextDouble();
+		char scienceL = input.next().charAt(0);
+		System.out.println("\nEnter History Average Grade and Level: ");
+		double history = input.nextDouble();
+		char historyL = input.next().charAt(0);
+		System.out.println("\nEnter World Language Average Grade and Level: ");
+		double lang = input.nextDouble();
+		char langL = input.next().charAt(0);
+		System.out.println("\nEnter Elective Average Grade and Level: ");
+		double elective = input.nextDouble();
+		char electiveL = input.next().charAt(0);
+		System.out.println("\nEnter Health Average Grade: ");
+		double health = input.nextDouble();
+		System.out.println("\nEnter Gym Average Grade ");
+		double pe = input.nextDouble();
+		input.close();
+	
+		char healthL = 'r';
+		char peL = 'r';
+
+		double tpv = letterGrade(ela, elaL) * 5 + letterGrade(math, mathL) * 5 + letterGrade(science, scienceL) * 5 + letterGrade(history, historyL) * 5 + letterGrade(elective, electiveL) * 5 + letterGrade(lang, langL) * 5 + letterGrade(health, healthL) * 1.75 + letterGrade(pe, peL) * 3.75;
+		double gpa = (tpv / 35) - 0.04;
+		System.out.printf("\nWeighted GPA: %.2f", gpa, " / 6.33");
+	}
+
+	public static double letterGrade(double grade, char gradeL) {
+		
+        double qpv = 0.0;
+
+		if (grade >= 96.5 && grade <= 100.0) {qpv = 4.33;} 
+		else if (grade >= 92.5 && grade < 96.5) {qpv = 4.0;} 
+		else if (grade >= 89.5 && grade < 92.5) {qpv = 3.67;}
+		else if (grade >= 86.5 && grade < 89.5) {qpv = 3.33;} 
+		else if (grade >= 82.5 && grade < 86.5) {qpv = 3.0;}
+		else if (grade >= 79.5 && grade < 82.5) {qpv = 2.67;}
+		else if (grade >= 76.5 && grade < 79.5) {qpv = 2.33;}
+		else if (grade >= 72.5 && grade < 76.5) {qpv = 2.0;}
+		else if (grade >= 69.5 && grade < 72.5) {qpv = 1.67;}
+		else if (grade > 64.5 && grade < 69.5) {qpv = 1.0;} 
+		else if (grade >= 0.0 && grade < 64.5) {qpv = 0.0;}
+		else {System.out.println("\nInvalid Input");}
+
+		if (gradeL == 'r' || gradeL == 'a' || gradeL == 'h') 
+		{
+			if (gradeL == 'a') {qpv += 1;} 
+
+			else if (gradeL == 'h') {qpv += 2;}
+		} 
+		else {System.out.println("Invalid Level");}	
+		return qpv;
+	}
+}
+
+
+
+
+
+
+
+	
+
